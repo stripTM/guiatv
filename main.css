@@ -1,0 +1,33 @@
+body {
+    display: block;
+    background-color: #9FF;
+    width: 100%;
+    overflow: hidden;
+}
+#slider {
+    border: 0px;
+}
+#guia {
+    box-sizing: content-box;
+    width: 10000px;
+    position: absolute;
+    left: 0;
+    transition: left 0.5s ease-in-out;
+}
+#guia ul {
+    height: 1.5em;
+    position: relative;
+}
+#guia ul,
+#guia .evento {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: content-box;
+}
+#guia .evento {
+    position: absolute;
+    background-color: #99F;
+    border: 1px solid #CCF;
+}
