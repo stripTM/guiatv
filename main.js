@@ -13,33 +13,36 @@ Guia = (function () {
       var
         inicio = 0,
         duracion = 0;
-      for (var item of $ers) {
-          duracion = Math.floor(Math.random() * 1000);
-          item.style.left = inicio+'px';
-          item.style.width = duracion+'px';
-          inicio += duracion;
-          inicio = inicio % anchoGuia ;
-          //console.log(inicio, anchoGuia);
-      }
+    $ers.forEach(
+        function(item) {
+              duracion = Math.floor(Math.random() * 1000);
+              item.style.left = inicio+'px';
+              item.style.width = duracion+'px';
+              inicio += duracion;
+              inicio = inicio % anchoGuia ;
+              //console.log(inicio, anchoGuia);
+          }
+      );
   }
+
   function initSlider() {
       var slider = document.querySelector("#slider");
-      slider.addEventListener("change", function (e) {
-          var inicioVentana = Math.floor(anchoGuia * e.currentTarget.value / 100) - anchoGuia;
+      slider.addEventListener("input", function (e) {
+          var inicioVentana = -Math.floor(anchoGuia * e.currentTarget.value / 100);
           $guia.style.left = inicioVentana+'px';
-          console.log( inicioVentana );
+          //console.log( inicioVentana );
       });
   }
 
     // Public API
     return {
     init: function () {
-        $guia = document.querySelector("#guia");
-        anchoGuia = guia.clientWidth;
+        $guia = document.querySelector("#eventos");
+        anchoGuia = $guia.clientWidth;
         $ers = document.querySelectorAll("#guia .evento");
         distribuye();
         initSlider();
-        console.log("Inicio");
+        //console.log("Inicio", anchoGuia);
     },
     getErs: function () {
         console.log("otro");
@@ -49,4 +52,4 @@ Guia = (function () {
 }());
 
 Guia.init();
-console.log(Guia.getErs());
+//console.log(Guia.getErs());

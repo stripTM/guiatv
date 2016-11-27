@@ -1,14 +1,17 @@
 <?php
     $salidaCanales = '';
 
+    $salidaCanales = "<ul>";
     for($n = 0; $n < 50; $n++) {
-        $salidaCanales .= "<ul><li class='canal'>Canal $n</li>";
-        $salidaEventos = '';
+        $salidaCanales .= "<li class='canal'>Canal $n</li>";
+        $salidaEventos .= "<ul>";
+        $salidaEventosCanal = '';
         for($e = 0; $e < 50; $e++) {
-            $salidaEventos .= "<li class='evento'>foo $e var</li>";
+            $salidaEventosCanal .= "<li class='evento'>foo $e var</li>";
         }
-        $salidaCanales .= "$salidaEventos</ul>";
+        $salidaEventos .= "$salidaEventosCanal</ul>";
     }
+    $salidaCanales .= "</ul>";
 
 ?><!DOCTYPE html>
 <html>
@@ -18,9 +21,12 @@
         <link type="text/css" rel="stylesheet" href="main.css">
     </head>
     <body>
-        <input type="range" min="0" max="100" value="50" name="slider" id="slider">
+        <div id="tools">
+            <input type="range" min="0" max="100" value="50" name="slider" id="slider">
+        </div>
         <section id="guia">
-            <?=$salidaCanales?>
+            <div id="canales"><?=$salidaCanales?></div>
+            <div id="eventos"><?=$salidaEventos?></div>
         </section>
         <script type="text/javascript" src="main.js"></script>
     </body>
